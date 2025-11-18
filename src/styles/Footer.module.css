@@ -1,0 +1,18 @@
+.footer {
+  height: 40px;
+  width: 100%;
+  background-color: #000000;
+  border-top: 0.5px solid #00c951;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 2rem;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 0.8rem;
+  color: #00c951;
+  text-shadow: 0 0 5px #00c951;
+  position: relative;
+  z-index: 10;
+  flex-shrink: 0;
+  font-weight: 400;
+}
