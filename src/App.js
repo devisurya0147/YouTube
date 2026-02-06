@@ -18,37 +18,44 @@ const Home = () => {
     return () => window.removeEventListener('resize', handleResize)
   }, [])
 
+  // Check if mobile view
+  const isMobile = dimensions.width <= 768
+
   // Calculate dimensions based on ratios
   const headerHeight = Math.round(dimensions.height * 0.1211)
-  const middleHeight = Math.round(dimensions.height * 0.8330)
+  const middleHeight = isMobile ? 'auto' : Math.round(dimensions.height * 0.8330)
   const footerHeight = Math.round(dimensions.height * 0.0461)
 
-  const leftWidth = Math.round(dimensions.width * 0.3995 - 0.25)
-  const rightWidth = Math.round(dimensions.width * 0.60 - 0.25)
+  const leftWidth = isMobile ? 0 : Math.round(dimensions.width * 0.3995 - 0.25)
+  const rightWidth = isMobile ? dimensions.width : Math.round(dimensions.width * 0.60 - 0.25)
 
   const dynamicStyles = {
     app: {
       width: `${dimensions.width}px`,
-      height: `${dimensions.height}px`,
+      height: isMobile ? 'auto' : `${dimensions.height}px`,
+      minHeight: isMobile ? '100vh' : undefined,
     },
     header: {
-      height: `${headerHeight}px`,
+      height: isMobile ? 'auto' : `${headerHeight}px`,
       width: `${dimensions.width}px`,
     },
     content: {
-      height: `${middleHeight}px`,
+      height: isMobile ? 'auto' : `${middleHeight}px`,
       width: `${dimensions.width}px`,
+      minHeight: isMobile ? 'calc(100vh - 120px)' : undefined,
     },
     left_panel: {
       width: `${leftWidth}px`,
-      height: `${middleHeight}px`,
+      height: isMobile ? 0 : `${middleHeight}px`,
+      display: isMobile ? 'none' : 'block',
     },
     right_panel: {
       width: `${rightWidth}px`,
-      height: `${middleHeight}px`,
+      height: isMobile ? 'auto' : `${middleHeight}px`,
+      minHeight: isMobile ? 'calc(100vh - 120px)' : undefined,
     },
     footer: {
-      height: `${footerHeight}px`,
+      height: isMobile ? 'auto' : `${footerHeight}px`,
       width: `${dimensions.width}px`,
     },
   }

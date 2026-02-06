@@ -10,6 +10,7 @@ const Terminal = () => {
   const [commandHistory, setCommandHistory] = useState([])
   const [loadingState, setLoadingState] = useState(null) // { command, dots, isRed }
   const terminalRef = useRef(null)
+  const hiddenInputRef = useRef(null)
 
   const commandList = [
     'help',
@@ -39,7 +40,7 @@ sudo        - Special access command
 clear       - Clear the terminal
 
 Type any command to continue...`,
-about: `Hi, I'm Surya Teja Devi, a Developer & Cybersecurity Enthusiast.  
+    about: `Hi, I'm Surya Teja Devi, a Developer & Cybersecurity Enthusiast.  
 
 I specialize in:  
 • Full-Stack Development (Java, React, Node.js)  
@@ -49,17 +50,20 @@ I specialize in:
 
 I'm passionate about building secure, scalable systems and solving real-world problems through technology.`,
 
-projects: `Recent Projects:  
+    projects: `Recent Projects:  
 
+• NetMoat – Automated Network & Security Monitoring Tool built to analyze traffic patterns, detect anomalies, and identify potential security threats in real time.
 • AI-Powered Ambulance Traffic System – Built with OpenCV & TensorFlow to detect ambulances and optimize traffic signals.  
-• Tractor Rental Platform – End-to-end rental solution with authentication, booking, and real-time tracking using Flutter & Firebase.  
 • CyberRecon – Automated reconnaissance & dorking tool for bug bounty hunters with stylized reporting.  
 • Automated Cyber Threat Detection – Hybrid OSSEC + Isolation Forest ML system for enterprise threat monitoring.  
-• Network Performance Benchmarking – Full-stack project with React.js frontend & Node.js backend.  
+• Tractor Rental Platform – End-to-end rental solution with authentication, booking, and real-time tracking using Flutter & Firebase.  
+  
 
-Each project highlights my focus on innovation, security, and scalability.`,
+Each project highlights my focus on innovation, security, and scalability.
 
-skills: `Technical Skills:  
+want to check out..? GitHub: github.com/SuryaTejaDevi`,
+
+    skills: `Technical Skills:  
 
 Languages:  
 • Java, JavaScript, Python, C++  
@@ -74,7 +78,7 @@ Cybersecurity Tools:
 • Recon & Dorking (Google, GitHub)  
 • Vulnerability Assessment & Penetration Testing`,
 
-experience: `Professional Experience:  
+    experience: `Professional Experience:  
 
 Cybersecurity Intern – AICTE Palo Alto Networks (Jul 2024 – Sep 2024)  
 • Hands-on with firewalls, IDS/IPS, and security policies.  
@@ -85,7 +89,7 @@ Projects (2024–2025)
 • Built AI-powered security & full-stack systems.  
 • Focused on bridging development with cybersecurity principles.`,
 
-education: `Educational Background:  
+    education: `Educational Background:  
 
 🎓 Bachelor of Engineering in Computer Science – CMR College of Engineering & Technology (2021–2025)  
 
@@ -94,15 +98,19 @@ education: `Educational Background:
 • Java Full-Stack Development  
 • Cloud Security & AI/ML in Cybersecurity`,
 
-certifications: `Certifications:  
+    certifications: `Certifications:  
 
 🏆 AICTE – Palo Alto Networks Cybersecurity Virtual Internship  
 🏆 Ethical Hacking & Penetration Testing (self-learning)  `,
 
-leadership: `Leadership & Community:
+    leadership: `Leadership & Community:
 
 🎯 Department Coordinator – Azura Event, CMRCET (2025)
-• Organized & coordinated student activities across 2nd–4th year.
+• Organized & coordinated student activities.
+
+🟢 GFG Campus Mantri – GeeksforGeeks, CMRCET (2024–Present)
+• Served as campus ambassador, organizing coding events and technical sessions.
+• Encouraged DSA, competitive programming, and placement-oriented preparation.
 
 👥 Student Council Member – CMR College of Engineering (2022–Present)
 • Led technical workshops & hackathons with 200+ participants.
@@ -112,16 +120,16 @@ leadership: `Leadership & Community:
 • Contributor to security awareness initiatives.
 • Active in bug bounty & open-source communities.`,
 
-contact: `📬 Get In Touch:
+    contact: `📬 Get In Touch:
 
 Email: devisuryateja823@gmail.com
-LinkedIn: linkedin.com/in/suryatejadevi
+LinkedIn: linkedin/suryatejadevi
 GitHub: github.com/SuryaTejaDevi
-Twitter (X): /SuryaTeja_24
+Twitter (X): x.com/SuryaTeja_24
 
 Feel free to reach out for collaborations, security consulting, or tech discussions!`,
 
-sudo: `Hi👋, I'm  Surya Teja Devi, a Software & Cyber Security Engineer.`
+    sudo: `Hi👋, I'm  Surya Teja Devi, a Software & Cyber Security Engineer.`
 
   }
 
@@ -152,31 +160,31 @@ sudo: `Hi👋, I'm  Surya Teja Devi, a Software & Cyber Security Engineer.`
   // Helper function to convert contact links to clickable format
   const convertContactLinks = (text) => {
     if (!text) return text
-    
-    // Convert email
+
+    // Convert email - opens mail client
     text = text.replace(
-      /devisuryateja823@gmail.com/g,
+      /devisuryateja823@gmail\.com/g,
       '<a href="mailto:devisuryateja823@gmail.com" target="_blank" rel="noopener noreferrer" style="color: #00d4ff; text-decoration: underline; cursor: pointer;">devisuryateja823@gmail.com</a>'
     )
-    
-    // Convert LinkedIn
+
+    // Convert LinkedIn - friendly label linking to full URL
     text = text.replace(
-      /linkedin\.com\/in\/suryatejadevi/g,
-      '<a href="https://linkedin.com/in/suryatejadevi" target="_blank" rel="noopener noreferrer" style="color: #00d4ff; text-decoration: underline; cursor: pointer;">linkedin.com/in/suryatejadevi</a>'
+      /linkedin\/suryatejadevi/g,
+      '<a href="https://www.linkedin.com/in/suryatejadevi" target="_blank" rel="noopener noreferrer" style="color: #00d4ff; text-decoration: underline; cursor: pointer;">linkedin/suryatejadevi</a>'
     )
-    
-    // Convert GitHub
+
+    // Convert GitHub - friendly label linking to full URL
     text = text.replace(
       /github\.com\/SuryaTejaDevi/g,
       '<a href="https://github.com/SuryaTejaDevi" target="_blank" rel="noopener noreferrer" style="color: #00d4ff; text-decoration: underline; cursor: pointer;">github.com/SuryaTejaDevi</a>'
     )
-    
-    // Convert Twitter (X)
+
+    // Convert Twitter (X) - friendly label linking to full URL
     text = text.replace(
-      /\/SuryaTeja_24/g,
-      '<a href="https://x.com/SuryaTeja_24" target="_blank" rel="noopener noreferrer" style="color: #00d4ff; text-decoration: underline; cursor: pointer;">/SuryaTeja_24</a>'
+      /x\.com\/SuryaTeja_24/g,
+      '<a href="https://x.com/SuryaTeja_24" target="_blank" rel="noopener noreferrer" style="color: #00d4ff; text-decoration: underline; cursor: pointer;">x.com/SuryaTeja_24</a>'
     )
-    
+
     return text
   }
 
@@ -187,13 +195,11 @@ sudo: `Hi👋, I'm  Surya Teja Devi, a Software & Cyber Security Engineer.`
       setOutput((prev) => [...prev, ""])
       typeEffect(response, () => {
         setOutput((prev) => {
-          const newOutput = [...prev, " "]
-          // After typing, make links clickable for contact command or if response contains contact info
-          const isContactInfo = cmd === 'contact' || response.includes('devisuryateja823@gmail.com')
-          if (isContactInfo) {
-            return newOutput.map(line => convertContactLinks(line))
-          }
-          return newOutput
+          const newOutput = [...prev]
+          // Apply link conversion only to the last typed line to prevent recursive wrapping
+          const lastIndex = newOutput.length - 1
+          newOutput[lastIndex] = convertContactLinks(newOutput[lastIndex])
+          return [...newOutput, " "]
         })
       })
     }
@@ -203,18 +209,22 @@ sudo: `Hi👋, I'm  Surya Teja Devi, a Software & Cyber Security Engineer.`
   const processCommand = (cmd) => {
     const originalCmd = cmd.trim()
     cmd = originalCmd.toLowerCase()
-    
+
     if (cmd === "clear") {
       setOutput([])
       setFailedAttempts(0)
       setCommandHistory([])
       setLoadingState(null)
+      setInput("") // Reset input state for display
+      if (hiddenInputRef.current) {
+        hiddenInputRef.current.value = "" // Manually clear hidden input
+      }
       return
     }
 
     // Direct commands that don't need loading animation
     const directCommands = ['help', 'about', 'projects', 'skills', 'experience', 'contact', 'education', 'certifications', 'leadership', 'sudo', 'clear']
-    
+
     // Check for exact command match first (direct commands - no loading animation)
     // Only exact matches skip loading - typos will go through loading animation
     if (commandOutputs[cmd] && directCommands.includes(cmd)) {
@@ -229,15 +239,15 @@ sudo: `Hi👋, I'm  Surya Teja Devi, a Software & Cyber Security Engineer.`
     // All other inputs get loading animation (whether twisted or normal)
     // Step 1: Show command line once
     setOutput((prev) => [...prev, `${prompt}${originalCmd}`])
-    
+
     // Step 2: Show error line in RED (for all non-direct commands)
     const errorLine = `bash: ${originalCmd}: command not found`
     setOutput((prev) => [...prev, errorLine])
-    
+
     // Step 3: Show "Fetching information..." line with dots (white) - combined on same line
     const fetchingLinePrefix = 'Fetching information from AI assistant'
     setOutput((prev) => [...prev, `${fetchingLinePrefix}...`])
-    
+
     // Start loading state
     setLoadingState({
       command: originalCmd,
@@ -259,7 +269,7 @@ sudo: `Hi👋, I'm  Surya Teja Devi, a Software & Cyber Security Engineer.`
       setOutput((prev) => {
         const newOutput = [...prev]
         // Find the fetching line
-        const fetchingIndex = newOutput.findIndex(line => 
+        const fetchingIndex = newOutput.findIndex(line =>
           line.startsWith(fetchingLinePrefix)
         )
         if (fetchingIndex !== -1) {
@@ -272,13 +282,13 @@ sudo: `Hi👋, I'm  Surya Teja Devi, a Software & Cyber Security Engineer.`
     // After 2 seconds, process the response
     setTimeout(() => {
       clearInterval(dotInterval)
-      
+
       // First, check for typo-corrected direct commands (fuzzy matching during loading)
       const findClosestCommand = (input, commands, maxDistance = 2) => {
         const inputLower = input.toLowerCase()
         let bestMatch = null
         let bestDistance = Infinity
-        
+
         commands.forEach(command => {
           const distance = levenshteinDistance(inputLower, command.toLowerCase())
           if (distance <= maxDistance && distance < bestDistance) {
@@ -286,10 +296,10 @@ sudo: `Hi👋, I'm  Surya Teja Devi, a Software & Cyber Security Engineer.`
             bestMatch = command
           }
         })
-        
+
         return bestMatch && bestDistance <= maxDistance ? bestMatch : null
       }
-      
+
       const levenshteinDistance = (str1, str2) => {
         const matrix = []
         const len1 = str1.length
@@ -322,17 +332,17 @@ sudo: `Hi👋, I'm  Surya Teja Devi, a Software & Cyber Security Engineer.`
 
         return matrix[len2][len1]
       }
-      
+
       // Try to find closest match for typos in direct commands (fuzzy matching)
       const correctedCmd = findClosestCommand(originalCmd, directCommands, 2)
       if (correctedCmd && commandOutputs[correctedCmd]) {
         // Found a typo-corrected direct command - show its output
         const response = commandOutputs[correctedCmd]
-        
+
         // Remove loading line
         setOutput((prev) => {
           const newOutput = [...prev]
-          const fetchingIndex = newOutput.findIndex(line => 
+          const fetchingIndex = newOutput.findIndex(line =>
             line.startsWith('Fetching information from AI assistant')
           )
           if (fetchingIndex !== -1) {
@@ -351,17 +361,25 @@ sudo: `Hi👋, I'm  Surya Teja Devi, a Software & Cyber Security Engineer.`
         setTimeout(() => {
           setOutput((prev) => [...prev, ""])
           typeEffect(response, () => {
-            setOutput((prev) => [...prev, " "])
+            setOutput((prev) => {
+              const newOutput = [...prev]
+              const lastIndex = newOutput.length - 1
+              newOutput[lastIndex] = convertContactLinks(newOutput[lastIndex])
+              return [...newOutput, " "]
+            })
           })
 
           setLoadingState(null)
           setFailedAttempts(0)
           setCommandHistory((prev) => [...prev, originalCmd])
+          if (hiddenInputRef.current) {
+            hiddenInputRef.current.value = "" // Manually clear hidden input
+          }
         }, 100)
-        
+
         return
       }
-      
+
       // Get AI response - pass isTwisted flag for custom outputs
       const isTwisted = isTwistedQuestion(originalCmd)
       const aiResponse = runAIQuery(originalCmd, commandOutputs, isTwisted)
@@ -371,7 +389,7 @@ sudo: `Hi👋, I'm  Surya Teja Devi, a Software & Cyber Security Engineer.`
       setOutput((prev) => {
         const newOutput = [...prev]
         // Remove "Fetching information..." line (which includes dots)
-        const fetchingIndex = newOutput.findIndex(line => 
+        const fetchingIndex = newOutput.findIndex(line =>
           line.startsWith('Fetching information from AI assistant')
         )
         if (fetchingIndex !== -1) {
@@ -395,49 +413,75 @@ sudo: `Hi👋, I'm  Surya Teja Devi, a Software & Cyber Security Engineer.`
           typeEffect(
             `I can only provide information about Surya Teja Devi from his portfolio.`,
             () => {
-              setOutput((prev) => [...prev, " "])
+              setOutput((prev) => {
+                const newOutput = [...prev]
+                const lastIndex = newOutput.length - 1
+                newOutput[lastIndex] = convertContactLinks(newOutput[lastIndex])
+                return [...newOutput, " "]
+              })
             }
           )
         } else {
           // Show the AI response with typing effect
           setOutput((prev) => [...prev, ""])
           typeEffect(aiResponse, () => {
-            setOutput((prev) => [...prev, " "])
+            setOutput((prev) => {
+              const newOutput = [...prev]
+              const lastIndex = newOutput.length - 1
+              newOutput[lastIndex] = convertContactLinks(newOutput[lastIndex])
+              return [...newOutput, " "]
+            })
           })
         }
 
         setLoadingState(null)
         setFailedAttempts(0)
         setCommandHistory((prev) => [...prev, originalCmd])
+        if (hiddenInputRef.current) {
+          hiddenInputRef.current.value = "" // Manually clear hidden input
+        }
       }, 100)
     }, 2000)
   }
 
 
 
-  // Keyboard input handling
-  useEffect(() => {
-    const handleKeyDown = (e) => {
-      if (typingInProgress) {
-        e.preventDefault()
-        return
-      }
-      if (e.key === "Enter") {
-        e.preventDefault()
-        if (input.trim() !== "") {
-          processCommand(input)
-          setInput("")
-        }
-      } else if (e.key === "Backspace") {
-        setInput((prev) => prev.slice(0, -1))
-      } else if (e.key.length === 1 && !e.ctrlKey) {
-        setInput((prev) => prev + e.key)
-      }
+  // Handle input focus
+  const handleTerminalClick = (e) => {
+    // Don't focus if user is clicking a link
+    if (e.target.tagName === 'A') return;
+
+    if (hiddenInputRef.current) {
+      hiddenInputRef.current.focus()
+    }
+  }
+
+  // Handle key down on hidden input
+  const handleKeyDown = (e) => {
+    if (typingInProgress) {
+      e.preventDefault()
+      return
     }
 
-    document.addEventListener("keydown", handleKeyDown)
-    return () => document.removeEventListener("keydown", handleKeyDown)
-  }, [input, typingInProgress, failedAttempts, commandHistory])
+    if (e.key === "Enter") {
+      e.preventDefault()
+      const val = input.trim()
+      if (val !== "") {
+        processCommand(val)
+        setInput("")
+        if (hiddenInputRef.current) {
+          hiddenInputRef.current.value = "" // Manually clear hidden input
+        }
+      }
+    }
+  }
+
+  // Handle input change
+  const handleInputChange = (e) => {
+    if (typingInProgress) return
+    const value = e.target.value
+    setInput(value)
+  }
 
   // Welcome message on load
   useEffect(() => {
@@ -455,7 +499,23 @@ sudo: `Hi👋, I'm  Surya Teja Devi, a Software & Cyber Security Engineer.`
   }, [output])
 
   return (
-    <div className={styles.container}>
+    <div className={styles.container} onClick={handleTerminalClick}>
+      {/* Hidden input for mobile keyboard support */}
+      <input
+        ref={hiddenInputRef}
+        type="text"
+        className={styles.hiddenInput}
+        defaultValue=""
+        onChange={handleInputChange}
+        onKeyDown={handleKeyDown}
+        autoFocus
+        autoComplete="off"
+        autoCapitalize="off"
+        spellCheck="false"
+        inputMode="text"
+        dir="ltr"
+      />
+
       {/* Navigation Bar */}
       <div className={styles.navigation}>
         <div className={styles.navCommands}>
@@ -489,7 +549,7 @@ sudo: `Hi👋, I'm  Surya Teja Devi, a Software & Cyber Security Engineer.`
               </div>
             )
           }
-          
+
           // Check if this is the error line (bash: command not found)
           if (line.startsWith('bash:') && line.includes('command not found')) {
             const isErrorRed = loadingState && loadingState.isRed && loadingState.errorLine === line
@@ -499,12 +559,12 @@ sudo: `Hi👋, I'm  Surya Teja Devi, a Software & Cyber Security Engineer.`
               </div>
             )
           }
-          
+
           // Check if this is the "Fetching information..." line (with dots on same line)
           if (line.startsWith('Fetching information from AI assistant')) {
             // Use current dots from loading state if available, otherwise use what's in the line
             const currentDots = loadingState?.dots || '...'
-            const displayLine = loadingState 
+            const displayLine = loadingState
               ? `Fetching information from AI assistant${currentDots}`
               : line
             return (
@@ -513,7 +573,7 @@ sudo: `Hi👋, I'm  Surya Teja Devi, a Software & Cyber Security Engineer.`
               </div>
             )
           }
-          
+
           return (
             <div key={index} className={`${styles.line} ${styles.output_text}`} dangerouslySetInnerHTML={{ __html: line }}>
             </div>

@@ -16,16 +16,49 @@
   letter-spacing: 1px;
   color: #00c951;
   margin: 0;
-  line-height: 1.2; /* keeps the heading tight */
+  line-height: 1.2;
+  /* keeps the heading tight */
   font-family: 'Source Sans Pro', sans-serif;
   /* No glow effects */
 }
 
 .header p {
   font-size: 0.9rem;
-  margin: 2px 0 0 0; /* reduced gap from heading */
-  line-height: 1.2;  /* keeps text compact */
+  margin: 2px 0 0 0;
+  /* reduced gap from heading */
+  line-height: 1.2;
+  /* keeps text compact */
   color: #808080;
   font-family: 'Source Sans Pro', sans-serif;
   font-weight: 400;
+}
+
+/* Mobile breakpoint */
+@media (max-width: 768px) {
+  .header {
+    padding: 6px 12px;
+  }
+
+  .header h1 {
+    font-size: 1.4rem;
+  }
+
+  .header p {
+    font-size: 0.75rem;
+  }
+}
+
+/* Small mobile breakpoint */
+@media (max-width: 480px) {
+  .header {
+    padding: 5px 10px;
+  }
+
+  .header h1 {
+    font-size: 1.2rem;
+  }
+
+  .header p {
+    font-size: 0.65rem;
+  }
 }

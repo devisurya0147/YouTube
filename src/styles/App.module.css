@@ -99,3 +99,56 @@ body {
     width: 400px;
   }
 }
+
+/* Tablet breakpoint */
+@media (max-width: 1024px) {
+  .left_panel {
+    width: 35%;
+  }
+
+  .right_panel {
+    width: 65%;
+  }
+}
+
+/* Mobile breakpoint */
+@media (max-width: 768px) {
+  .content {
+    flex-direction: column;
+    height: auto;
+    min-height: calc(100vh - 120px);
+  }
+
+  .left_panel {
+    display: none;
+    /* Hide 3D scene on mobile for performance */
+  }
+
+  .right_panel {
+    width: 100% !important;
+    height: 100% !important;
+    min-height: calc(100vh - 120px);
+    flex: 1;
+  }
+
+  .header {
+    padding: 0 1rem;
+  }
+
+  .footer {
+    padding: 0 1rem;
+    font-size: 0.7rem;
+  }
+}
+
+/* Small mobile breakpoint */
+@media (max-width: 480px) {
+  .header {
+    padding: 0 0.75rem;
+  }
+
+  .footer {
+    padding: 0 0.75rem;
+    font-size: 0.65rem;
+  }
+}

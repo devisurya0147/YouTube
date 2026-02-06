@@ -16,3 +16,22 @@
   flex-shrink: 0;
   font-weight: 400;
 }
+
+/* Mobile breakpoint */
+@media (max-width: 768px) {
+  .footer {
+    height: 36px;
+    padding: 0 1rem;
+    font-size: 0.7rem;
+  }
+}
+
+/* Small mobile breakpoint */
+@media (max-width: 480px) {
+  .footer {
+    height: 32px;
+    padding: 0 0.75rem;
+    font-size: 0.6rem;
+    text-shadow: none;
+  }
+}

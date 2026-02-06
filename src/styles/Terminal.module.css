@@ -7,7 +7,7 @@
   flex-direction: column;
   font-family: 'Source Sans Pro', monospace;
   pointer-events: auto;
-  user-select: none;
+  user-select: text;
 }
 
 .output {
@@ -70,13 +70,15 @@
   margin-left: 2px;
   animation: blink 1s infinite;
 }
+
 .navigation {
   background: #000;
   padding: 20px 20px 0 21px;
   border-bottom: none;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;    /* <-- Aligns content to the left */
+  align-items: flex-start;
+  /* <-- Aligns content to the left */
   position: sticky;
   top: 0;
   z-index: 10;
@@ -97,7 +99,8 @@
   height: 1px;
   background: #00c951;
   width: 100%;
-  margin: 5px 0 0;     /* <-- Aligns to the left */
+  margin: 5px 0 0;
+  /* <-- Aligns to the left */
   position: relative;
 }
 
@@ -105,10 +108,113 @@
 
 
 @keyframes blink {
-  0%, 50% {
+
+  0%,
+  50% {
     opacity: 1;
   }
-  51%, 100% {
+
+  51%,
+  100% {
     opacity: 0;
   }
+}
+
+/* Tablet breakpoint */
+@media (max-width: 1024px) {
+  .output {
+    width: 80vw;
+  }
+
+  .navigation {
+    width: 80vw;
+  }
+}
+
+/* Mobile breakpoint */
+@media (max-width: 768px) {
+  .container {
+    overflow-y: auto;
+  }
+
+  .output {
+    width: 100%;
+    padding: 0.75rem;
+    padding-left: 0.75rem;
+  }
+
+  .navigation {
+    width: 100%;
+    padding: 12px 0.75rem 0;
+  }
+
+  .navCommands {
+    justify-content: flex-start;
+    gap: 4px 8px;
+  }
+
+  .navCommand {
+    font-size: 0.75rem;
+  }
+
+  .separator {
+    display: none;
+    /* Hide separators on mobile, use gap instead */
+  }
+
+  .line {
+    font-size: 0.8rem;
+  }
+
+  .cursor {
+    width: 6px;
+    height: 14px;
+  }
+}
+
+/* Small mobile breakpoint */
+@media (max-width: 480px) {
+  .output {
+    padding: 0.5rem;
+  }
+
+  .navigation {
+    padding: 10px 0.5rem 0;
+  }
+
+  .navCommand {
+    font-size: 0.65rem;
+  }
+
+  .line {
+    font-size: 0.7rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .prompt {
+    font-size: 0.7rem;
+  }
+
+  .input {
+    font-size: 0.7rem;
+  }
+
+  .output_text {
+    font-size: 0.7rem;
+  }
+}
+
+.hiddenInput {
+  position: fixed;
+  top: -100px;
+  left: -100px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  border: none;
+  background: transparent;
+  outline: none;
+  padding: 0;
+  margin: 0;
+  z-index: -1;
 }
