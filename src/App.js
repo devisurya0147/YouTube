@@ -66,6 +66,7 @@ const Home = () => {
       <div className={styles.content} style={dynamicStyles.content}>
         <div className={styles.left_panel} style={dynamicStyles.left_panel}>
           <ThreeScene />
+          <div className={styles.idCardLabel}>[Interactive Id Card]</div>
         </div>
         <div className={styles.right_panel} style={dynamicStyles.right_panel}>
           <Terminal />
